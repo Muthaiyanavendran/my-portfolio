@@ -1,0 +1,2290 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Muthaiyanavendran K N | Java Developer | ServiceNow | Power Platform</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+
+            theme: {
+                extend: {
+
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+
+                    colors: {
+                        background: '#050814',
+                        surface: '#0f172a',
+                        surfaceLight: '#1e293b',
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                    },
+
+                    backgroundImage: {
+                        'hero-glow':
+                            'conic-gradient(from 180deg at 50% 50%, #2a8af633 0deg, #a853ba33 180deg, #e92a6733 360deg)',
+                    },
+
+                    animation: {
+                        blob: 'blob 7s infinite',
+                        float: 'float 6s ease-in-out infinite',
+                    },
+
+                    keyframes: {
+
+                        blob: {
+                            '0%': {
+                                transform: 'translate(0px, 0px) scale(1)'
+                            },
+
+                            '33%': {
+                                transform: 'translate(30px, -50px) scale(1.1)'
+                            },
+
+                            '66%': {
+                                transform: 'translate(-20px, 20px) scale(0.9)'
+                            },
+
+                            '100%': {
+                                transform: 'translate(0px, 0px) scale(1)'
+                            }
+                        },
+
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        body {
+            background-color: #050814;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050814;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(
+                145deg,
+                rgba(30, 41, 59, 0.4) 0%,
+                rgba(15, 23, 42, 0.6) 100%
+            );
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(
+                to right,
+                #3b82f6,
+                #8b5cf6,
+                #06b6d4
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                #3b82f6,
+                #8b5cf6,
+                transparent
+            );
+        }
+
+        @media (min-width: 768px) {
+
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body class="antialiased selection:bg-primary selection:text-white relative">
+
+    <!-- Background Effects -->
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+
+        <div class="bg-blob bg-primary/20 w-96 h-96 top-[-10%] left-[-10%] animate-blob"></div>
+
+        <div class="bg-blob bg-secondary/20 w-96 h-96 bottom-[-10%] right-[-10%] animate-blob"
+            style="animation-delay:2s;">
+        </div>
+
+        <div class="bg-blob bg-accent/20 w-80 h-80 top-[40%] left-[60%] animate-blob"
+            style="animation-delay:4s;">
+        </div>
+
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300"
+        id="navbar">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="flex items-center justify-between h-20">
+
+                <a href="#home"
+                    class="font-heading font-bold text-xl tracking-wider text-white flex items-center gap-2">
+
+                    <span
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-sm">
+                        MK
+                    </span>
+
+                    Muthaiyanavendran
+                </a>
+
+
+                <!-- Desktop Menu -->
+
+                <div class="hidden md:block">
+
+                    <div class="ml-10 flex items-baseline space-x-8">
+
+                        <a href="#about"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            About
+                        </a>
+
+                        <a href="#experience"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            Experience
+                        </a>
+
+                        <a href="#skills"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            Skills
+                        </a>
+
+                        <a href="#projects"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            Projects
+                        </a>
+
+                        <a href="#education"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            Education
+                        </a>
+
+                        <a href="#contact"
+                            class="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Mobile Button -->
+
+                <div class="md:hidden">
+
+                    <button id="mobile-menu-btn"
+                        class="text-gray-300 hover:text-white focus:outline-none p-2">
+
+                        <i class="fas fa-bars text-xl"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div id="mobile-menu"
+            class="md:hidden hidden glass border-t border-white/5 absolute w-full left-0">
+
+            <div class="px-4 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col items-center">
+
+                <a href="#about" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    About
+                </a>
+
+                <a href="#experience" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    Experience
+                </a>
+
+                <a href="#skills" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    Skills
+                </a>
+
+                <a href="#projects" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    Projects
+                </a>
+
+                <a href="#education" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    Education
+                </a>
+
+                <a href="#contact" class="mobile-link text-gray-300 px-3 py-3 text-base">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section id="home"
+        class="min-h-screen flex items-center justify-center pt-20 relative px-6">
+
+        <div class="max-w-4xl mx-auto text-center z-10">
+
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 mb-8 reveal">
+
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+
+                <span class="text-sm font-medium text-gray-300">
+                    Open to Software Development Opportunities
+                </span>
+
+            </div>
+
+
+            <h1
+                class="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 reveal">
+
+                Hi, I'm
+
+                <br class="md:hidden">
+
+                <span class="text-gradient">
+                    Muthaiyanavendran K N
+                </span>
+
+            </h1>
+
+
+            <h2
+                class="text-xl md:text-2xl font-medium text-gray-300 mb-6 reveal">
+
+                Java Developer
+
+                <span class="text-primary mx-2">|</span>
+
+                ServiceNow
+
+                <span class="text-secondary mx-2">|</span>
+
+                Power Platform
+
+                <span class="text-primary mx-2">|</span>
+
+                AI & Automation
+
+            </h2>
+
+
+            <p
+                class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed reveal">
+
+                Software developer with
+
+                <span class="text-white font-semibold">
+                    1.7 years of professional experience
+                </span>
+
+                with primary experience in
+
+                <span class="text-primary font-medium">
+                    Java, SQL and REST APIs
+                </span>
+
+                along with exposure to
+
+                <span class="text-secondary font-medium">
+                    ServiceNow, Microsoft Power Platform, AI and automation
+                </span>.
+
+            </p>
+
+
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+
+                <a href="#projects"
+                    class="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-medium text-center">
+
+                    View Projects
+
+                    <i class="fas fa-arrow-right text-sm ml-2"></i>
+
+                </a>
+
+
+                <a href="#contact"
+                    class="w-full sm:w-auto px-8 py-3 rounded-lg glass border border-white/10 text-white font-medium text-center">
+
+                    Contact Me
+
+                </a>
+
+
+                <!-- Replace with actual resume file -->
+
+                <a href="Muthaiyanavendran.pdf"
+                    download
+                    class="w-full sm:w-auto px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-gray-400 hover:text-white">
+
+                    <i class="fas fa-download"></i>
+
+                    Resume
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+
+            <span class="text-xs tracking-widest uppercase">
+                Scroll
+            </span>
+
+            <i class="fas fa-chevron-down text-sm"></i>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about"
+        class="py-24 relative z-10 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div
+                class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+
+
+                <!-- Image -->
+
+                <div class="w-full md:w-1/2 relative reveal">
+
+                    <div
+                        class="aspect-square rounded-2xl overflow-hidden glass-card p-2 relative">
+
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 z-10">
+                        </div>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+                            alt="Software Development"
+                            class="w-full h-full object-cover rounded-xl">
+
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-surfaceLight border border-white/10 rounded-xl p-4 shadow-xl flex items-center gap-3 z-20">
+
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
+
+                                <i class="fas fa-code text-white"></i>
+
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs text-gray-400">
+                                    Professional Experience
+                                </p>
+
+                                <p class="text-sm font-bold text-white">
+                                    1.7 Years
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- About Text -->
+
+                <div
+                    class="w-full md:w-1/2 reveal">
+
+                    <h2
+                        class="font-heading text-3xl md:text-4xl font-bold mb-2">
+
+                        About <span class="text-gradient">Me</span>
+
+                    </h2>
+
+                    <div
+                        class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mb-8">
+                    </div>
+
+
+                    <div
+                        class="space-y-5 text-gray-300 leading-relaxed">
+
+                        <p>
+
+                            I am a software developer with
+                            <strong class="text-white">
+                                1.7 years of professional experience
+                            </strong>,
+                            with my primary technical focus on
+                            <strong class="text-primary">
+                                Java backend and full-stack development
+                            </strong>.
+
+                        </p>
+
+
+                        <p>
+
+                            My experience includes working with
+                            <strong class="text-white">
+                                Java, SQL, REST APIs and application development
+                            </strong>,
+                            along with exposure to ServiceNow and enterprise
+                            technology environments.
+
+                        </p>
+
+
+                        <p>
+
+                            I have also explored
+                            <strong class="text-secondary">
+                                Microsoft Power Platform, Copilot Studio,
+                                AI tools and automation workflows
+                            </strong>
+                            through learning programs and proof-of-concept
+                            activities.
+
+                        </p>
+
+
+                        <p>
+
+                            I enjoy solving technical problems, learning new
+                            technologies and building practical applications
+                            that can solve real business requirements.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience"
+        class="py-24 relative z-10 bg-surface/50 px-6">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="text-center mb-16 reveal">
+
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold mb-2">
+
+                    Professional
+                    <span class="text-gradient">
+                        Experience
+                    </span>
+
+                </h2>
+
+                <div
+                    class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto">
+                </div>
+
+            </div>
+
+
+            <div
+                class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden reveal">
+
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none">
+                </div>
+
+
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-white/10 pb-6">
+
+                    <div>
+
+                        <h3 class="text-2xl font-bold text-white mb-1">
+
+                            Trainee Software Engineer
+
+                        </h3>
+
+                        <p class="text-primary font-medium flex items-center gap-2">
+
+                            <i class="fas fa-building"></i>
+
+                            Nihilent Limited
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="mt-4 md:mt-0 px-4 py-2 rounded-full glass border border-white/5 inline-flex items-center gap-2 text-sm text-gray-300 self-start md:self-auto">
+
+                        <i class="far fa-calendar-alt text-secondary"></i>
+
+                        Mar 2025 – Aug 2026
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-y-5">
+
+                    <p
+                        class="text-gray-400 text-sm uppercase tracking-wider font-semibold">
+
+                        Experience Summary
+
+                    </p>
+
+
+                    <ul class="space-y-4">
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Completed structured training in
+                                <strong class="text-white">
+                                    Java, SQL, Spring Boot, REST APIs and
+                                    application development
+                                </strong>.
+
+                            </span>
+
+                        </li>
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Worked with Java and backend development
+                                concepts during a
+                                <strong class="text-white">
+                                    4–5 month MultiChoice preparation
+                                </strong>
+                                assignment.
+
+                            </span>
+
+                        </li>
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Gained exposure to
+                                <strong class="text-white">
+                                    ServiceNow
+                                </strong>
+                                through enterprise platform learning,
+                                HRSD concepts and related activities.
+
+                            </span>
+
+                        </li>
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Participated in AI and automation learning
+                                activities involving
+                                <strong class="text-white">
+                                    Copilot Studio, n8n and AI-powered
+                                    workflows
+                                </strong>.
+
+                            </span>
+
+                        </li>
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Built and explored proof-of-concepts including
+                                API monitoring, QR generation and automation
+                                solutions.
+
+                            </span>
+
+                        </li>
+
+
+                        <li class="flex items-start gap-3">
+
+                            <i
+                                class="fas fa-check-circle text-accent mt-1 text-sm shrink-0">
+                            </i>
+
+                            <span class="text-gray-300">
+
+                                Maintained technical documentation,
+                                communicated progress through regular updates
+                                and collaborated with team members.
+
+                            </span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills"
+        class="py-24 relative z-10 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-16 reveal">
+
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold mb-2">
+
+                    Technical
+                    <span class="text-gradient">
+                        Skills
+                    </span>
+
+                </h2>
+
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+
+                    My primary development focus is Java, supported by
+                    ServiceNow, Power Platform and AI automation exposure.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+                <!-- Java -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+
+                            <i class="fab fa-java text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            Java & Backend
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            Core Java
+                        </span>
+
+                        <span class="skill">
+                            OOP
+                        </span>
+
+                        <span class="skill">
+                            Collections
+                        </span>
+
+                        <span class="skill">
+                            Java 8
+                        </span>
+
+                        <span class="skill">
+                            Spring Boot
+                        </span>
+
+                        <span class="skill">
+                            JPA / Hibernate
+                        </span>
+
+                        <span class="skill">
+                            REST APIs
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Database -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">
+
+                            <i class="fas fa-database text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            Database
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            SQL
+                        </span>
+
+                        <span class="skill">
+                            MySQL
+                        </span>
+
+                        <span class="skill">
+                            Database Design
+                        </span>
+
+                        <span class="skill">
+                            CRUD Operations
+                        </span>
+
+                        <span class="skill">
+                            JPA
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Frontend -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400">
+
+                            <i class="fas fa-laptop-code text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            Frontend
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            HTML5
+                        </span>
+
+                        <span class="skill">
+                            CSS3
+                        </span>
+
+                        <span class="skill">
+                            JavaScript
+                        </span>
+
+                        <span class="skill">
+                            TypeScript
+                        </span>
+
+                        <span class="skill">
+                            Angular
+                        </span>
+
+                        <span class="skill">
+                            Bootstrap
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ServiceNow -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">
+
+                            <i class="fas fa-cogs text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            ServiceNow
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            ServiceNow
+                        </span>
+
+                        <span class="skill">
+                            HRSD
+                        </span>
+
+                        <span class="skill">
+                            ITSM
+                        </span>
+
+                        <span class="skill">
+                            HR Case Lifecycle
+                        </span>
+
+                        <span class="skill">
+                            Employee Center
+                        </span>
+
+                        <span class="skill">
+                            Workflows
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Power Platform -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+
+                            <i class="fas fa-bolt text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            Power Platform
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            Power Apps
+                        </span>
+
+                        <span class="skill">
+                            Power Automate
+                        </span>
+
+                        <span class="skill">
+                            Dataverse
+                        </span>
+
+                        <span class="skill">
+                            Canvas Apps
+                        </span>
+
+                        <span class="skill">
+                            Power Platform
+                        </span>
+
+                        <span class="skill">
+                            Copilot Studio
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">
+
+                            <i class="fas fa-robot text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            AI & Automation
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            AI POCs
+                        </span>
+
+                        <span class="skill">
+                            Copilot Studio
+                        </span>
+
+                        <span class="skill">
+                            n8n
+                        </span>
+
+                        <span class="skill">
+                            Prompt Engineering
+                        </span>
+
+                        <span class="skill">
+                            Workflow Automation
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Tools -->
+
+                <div class="glass-card p-6 rounded-2xl reveal">
+
+                    <div class="flex items-center gap-3 mb-6">
+
+                        <div
+                            class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+
+                            <i class="fas fa-tools text-xl"></i>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">
+                            Tools
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="skill">
+                            Git
+                        </span>
+
+                        <span class="skill">
+                            GitHub
+                        </span>
+
+                        <span class="skill">
+                            IntelliJ IDEA
+                        </span>
+
+                        <span class="skill">
+                            VS Code
+                        </span>
+
+                        <span class="skill">
+                            Postman
+                        </span>
+
+                        <span class="skill">
+                            SoapUI
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects"
+        class="py-24 relative z-10 bg-surface/30 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-16 reveal">
+
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold mb-2">
+
+                    Featured
+                    <span class="text-gradient">
+                        Projects
+                    </span>
+
+                </h2>
+
+                <div
+                    class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mb-4">
+                </div>
+
+                <p class="text-gray-400">
+
+                    Selected development projects and proof-of-concepts.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+                <!-- PharmaGo -->
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden group reveal">
+
+                    <div class="h-48 overflow-hidden relative">
+
+                        <img
+                            src="https://placehold.co/800x400/0f172a/06b6d4?text=PharmaGo"
+                            alt="PharmaGo"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+                    </div>
+
+
+                    <div class="p-6">
+
+                        <h3
+                            class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+
+                            PharmaGo – Medicine E-Commerce
+
+                        </h3>
+
+
+                        <p class="text-gray-400 text-sm mb-4">
+
+                            A medicine e-commerce application developed to
+                            manage products, carts and orders.
+
+                        </p>
+
+
+                        <div class="mb-4">
+
+                            <h4
+                                class="text-xs text-gray-500 uppercase font-bold mb-2">
+
+                                Tech Stack
+
+                            </h4>
+
+
+                            <div class="flex flex-wrap gap-2">
+
+                                <span class="skill-small">
+                                    Java
+                                </span>
+
+                                <span class="skill-small">
+                                    Spring Boot
+                                </span>
+
+                                <span class="skill-small">
+                                    MySQL
+                                </span>
+
+                                <span class="skill-small">
+                                    REST API
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="text-sm text-gray-300">
+
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+
+                            Product management
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+
+                            Cart and order management
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+
+                            Backend REST APIs
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- API Extension -->
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden group reveal">
+
+                    <div class="h-48 overflow-hidden">
+
+                        <img
+                            src="https://placehold.co/800x400/0f172a/3b82f6?text=API+Monitoring"
+                            alt="API Monitoring"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+                    </div>
+
+
+                    <div class="p-6">
+
+                        <h3
+                            class="text-2xl font-bold text-white mb-2 group-hover:text-primary">
+
+                            API Monitoring Chrome Extension
+
+                        </h3>
+
+
+                        <p class="text-gray-400 text-sm mb-4">
+
+                            Chrome extension concept for monitoring API
+                            requests and analyzing website performance.
+
+                        </p>
+
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+
+                            <span class="skill-small">
+                                JavaScript
+                            </span>
+
+                            <span class="skill-small">
+                                Chrome APIs
+                            </span>
+
+                            <span class="skill-small">
+                                HTML
+                            </span>
+
+                            <span class="skill-small">
+                                CSS
+                            </span>
+
+                        </div>
+
+
+                        <p class="text-sm text-gray-300">
+
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+
+                            API request monitoring
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-primary mr-1"></i>
+
+                            Performance analysis
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Power Platform -->
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden group reveal">
+
+                    <div class="h-48 overflow-hidden">
+
+                        <img
+                            src="https://placehold.co/800x400/0f172a/8b5cf6?text=Power+Platform"
+                            alt="Power Platform"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+                    </div>
+
+
+                    <div class="p-6">
+
+                        <h3
+                            class="text-2xl font-bold text-white mb-2">
+
+                            Employee Helpdesk & Asset Request Portal
+
+                        </h3>
+
+
+                        <p class="text-gray-400 text-sm mb-4">
+
+                            Business application concept developed using
+                            Microsoft Power Platform and Dataverse.
+
+                        </p>
+
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+
+                            <span class="skill-small">
+                                Power Apps
+                            </span>
+
+                            <span class="skill-small">
+                                Power Automate
+                            </span>
+
+                            <span class="skill-small">
+                                Dataverse
+                            </span>
+
+                            <span class="skill-small">
+                                Canvas App
+                            </span>
+
+                        </div>
+
+
+                        <p class="text-sm text-gray-300">
+
+                            <i class="fas fa-arrow-right text-secondary mr-1"></i>
+
+                            Ticket management
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-secondary mr-1"></i>
+
+                            Asset requests
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-secondary mr-1"></i>
+
+                            Approval workflows
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI Automation -->
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden group reveal">
+
+                    <div class="h-48 overflow-hidden">
+
+                        <img
+                            src="https://placehold.co/800x400/0f172a/06b6d4?text=AI+Automation"
+                            alt="AI Automation"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+                    </div>
+
+
+                    <div class="p-6">
+
+                        <h3
+                            class="text-2xl font-bold text-white mb-2">
+
+                            AI-Powered ITSM Automation POC
+
+                        </h3>
+
+
+                        <p class="text-gray-400 text-sm mb-4">
+
+                            Proof-of-concept exploring AI-based ticket
+                            classification and routing using automation tools.
+
+                        </p>
+
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+
+                            <span class="skill-small">
+                                Copilot Studio
+                            </span>
+
+                            <span class="skill-small">
+                                n8n
+                            </span>
+
+                            <span class="skill-small">
+                                Python
+                            </span>
+
+                            <span class="skill-small">
+                                AI
+                            </span>
+
+                        </div>
+
+
+                        <p class="text-sm text-gray-300">
+
+                            <i class="fas fa-arrow-right text-accent mr-1"></i>
+
+                            Ticket classification
+
+                            <br>
+
+                            <i class="fas fa-arrow-right text-accent mr-1"></i>
+
+                            Automated routing
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFESSIONAL JOURNEY -->
+
+    <section
+        class="py-24 relative z-10 px-6">
+
+        <div class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-16 reveal">
+
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold mb-2">
+
+                    Professional
+                    <span class="text-gradient">
+                        Journey
+                    </span>
+
+                </h2>
+
+                <div
+                    class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto">
+                </div>
+
+            </div>
+
+
+            <div class="relative timeline-line space-y-8">
+
+
+                <!-- Java -->
+
+                <div
+                    class="relative flex flex-col md:flex-row items-center reveal">
+
+                    <div class="hidden md:block w-1/2 pr-8 text-right">
+
+                        <h4 class="text-lg font-bold text-white">
+                            Java & Backend Foundation
+                        </h4>
+
+                        <p class="text-sm text-gray-400">
+                            Core development experience
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="absolute left-[11px] md:left-1/2 w-3 h-3 bg-primary rounded-full transform -translate-x-1/2">
+                    </div>
+
+
+                    <div
+                        class="pl-10 md:pl-8 md:w-1/2 glass-card p-4 rounded-xl w-full">
+
+                        <p class="text-gray-300 text-sm">
+
+                            <i class="fab fa-java text-primary mr-2"></i>
+
+                            Worked with Java, SQL, REST APIs and backend
+                            development during company assignments and
+                            technical preparation.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ServiceNow -->
+
+                <div
+                    class="relative flex flex-col md:flex-row items-center reveal">
+
+                    <div
+                        class="md:w-1/2 md:pr-8 pl-10 md:pl-0 glass-card p-4 rounded-xl w-full">
+
+                        <p class="text-gray-300 text-sm">
+
+                            <i class="fas fa-cogs text-secondary mr-2"></i>
+
+                            Gained exposure to ServiceNow, particularly
+                            HRSD, ITSM concepts, cases, workflows and
+                            enterprise platform functionality.
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="absolute left-[11px] md:left-1/2 w-3 h-3 bg-secondary rounded-full transform -translate-x-1/2">
+                    </div>
+
+
+                    <div class="hidden md:block w-1/2 pl-8">
+
+                        <h4 class="text-lg font-bold text-white">
+                            ServiceNow
+                        </h4>
+
+                        <p class="text-sm text-gray-400">
+                            Enterprise platform exposure
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Power Platform -->
+
+                <div
+                    class="relative flex flex-col md:flex-row items-center reveal">
+
+                    <div class="hidden md:block w-1/2 pr-8 text-right">
+
+                        <h4 class="text-lg font-bold text-white">
+                            Power Platform
+                        </h4>
+
+                        <p class="text-sm text-gray-400">
+                            Business application development
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="absolute left-[11px] md:left-1/2 w-3 h-3 bg-accent rounded-full transform -translate-x-1/2">
+                    </div>
+
+
+                    <div
+                        class="pl-10 md:pl-8 md:w-1/2 glass-card p-4 rounded-xl w-full">
+
+                        <p class="text-gray-300 text-sm">
+
+                            <i class="fas fa-bolt text-accent mr-2"></i>
+
+                            Built learning projects using Power Apps,
+                            Power Automate and Dataverse, including an
+                            Employee Helpdesk and Asset Request Portal.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI -->
+
+                <div
+                    class="relative flex flex-col md:flex-row items-center reveal">
+
+                    <div
+                        class="md:w-1/2 md:pr-8 pl-10 md:pl-0 glass-card p-4 rounded-xl w-full">
+
+                        <p class="text-gray-300 text-sm">
+
+                            <i class="fas fa-robot text-purple-400 mr-2"></i>
+
+                            Explored AI automation using Copilot Studio,
+                            n8n and AI-powered ITSM proof-of-concepts.
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="absolute left-[11px] md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary to-secondary rounded-full transform -translate-x-1/2 shadow-lg">
+                    </div>
+
+
+                    <div class="hidden md:block w-1/2 pl-8">
+
+                        <h4 class="text-lg font-bold text-gradient">
+                            AI & Automation
+                        </h4>
+
+                        <p class="text-sm text-gray-400">
+                            Continuous technical development
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section id="education"
+        class="py-24 relative z-10 bg-surface/40 px-6">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="text-center mb-16 reveal">
+
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold">
+
+                    Education
+                </h2>
+
+                <div
+                    class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-4">
+                </div>
+
+            </div>
+
+
+            <div
+                class="glass-card rounded-2xl p-8 reveal">
+
+                <div
+                    class="flex flex-col md:flex-row justify-between gap-6">
+
+                    <div>
+
+                        <h3 class="text-2xl font-bold text-white">
+
+                            Bachelor of Engineering – Electronics and Communication Engineering
+
+                        </h3>
+
+                        <p class="text-primary mt-2">
+
+                            Muthayammal Engineering College
+
+                        </p>
+
+                        <p class="text-gray-400 text-sm mt-1">
+
+                            Anna University
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="text-gray-400 text-sm">
+
+                        2020 – 2024
+
+                    </div>
+
+                </div>
+
+
+                <div class="mt-6 grid md:grid-cols-3 gap-4">
+
+                    <div class="glass rounded-lg p-4">
+
+                        <p class="text-xs text-gray-500 uppercase">
+                            Degree
+                        </p>
+
+                        <p class="text-white font-semibold mt-1">
+                            B.E. ECE
+                        </p>
+
+                    </div>
+
+
+                    <div class="glass rounded-lg p-4">
+
+                        <p class="text-xs text-gray-500 uppercase">
+                            CGPA
+                        </p>
+
+                        <p class="text-white font-semibold mt-1">
+                            7.90
+                        </p>
+
+                    </div>
+
+
+                    <div class="glass rounded-lg p-4">
+
+                        <p class="text-xs text-gray-500 uppercase">
+                            Graduation
+                        </p>
+
+                        <p class="text-white font-semibold mt-1">
+                            April 2024
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KEY STRENGTHS -->
+
+    <section
+        class="py-20 relative z-10 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <h2
+                class="font-heading text-3xl font-bold text-center mb-12">
+
+                Key <span class="text-gradient">Strengths</span>
+
+            </h2>
+
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+                <div class="glass-card p-6 rounded-2xl">
+
+                    <i class="fas fa-code text-primary text-2xl mb-4"></i>
+
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        Java Development
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Strong focus on Core Java, backend development,
+                        SQL, REST APIs and application development.
+                    </p>
+
+                </div>
+
+
+                <div class="glass-card p-6 rounded-2xl">
+
+                    <i class="fas fa-cogs text-secondary text-2xl mb-4"></i>
+
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        Enterprise Platforms
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Exposure to ServiceNow and Microsoft Power Platform
+                        for enterprise and business application solutions.
+                    </p>
+
+                </div>
+
+
+                <div class="glass-card p-6 rounded-2xl">
+
+                    <i class="fas fa-robot text-accent text-2xl mb-4"></i>
+
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        AI & Automation
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Hands-on learning through AI proof-of-concepts,
+                        Copilot Studio, n8n and workflow automation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact"
+        class="py-24 relative z-10 px-6">
+
+        <div
+            class="max-w-5xl mx-auto glass-card rounded-3xl overflow-hidden reveal">
+
+            <div
+                class="flex flex-col md:flex-row">
+
+
+                <div
+                    class="w-full md:w-2/5 bg-surfaceLight/50 p-10">
+
+                    <h2
+                        class="font-heading text-3xl font-bold text-white mb-2">
+
+                        Let's Connect
+
+                    </h2>
+
+
+                    <p class="text-gray-400 text-sm mb-10">
+
+                        I'm open to software development opportunities,
+                        especially Java and backend development roles.
+
+                    </p>
+
+
+                    <div class="space-y-6">
+
+
+                        <!-- CHANGE EMAIL -->
+
+                        <a
+                            href="mailto:muthaiyanavendran@gmail.com"
+                            class="flex items-center gap-4 text-gray-300 hover:text-white">
+
+                            <div
+                                class="w-10 h-10 rounded-full glass flex items-center justify-center">
+
+                                <i class="fas fa-envelope"></i>
+
+                            </div>
+
+                            <span>
+                                Email Me
+                            </span>
+
+                        </a>
+
+
+                        <!-- LINKEDIN -->
+
+                        <a
+                            href="https://www.linkedin.com/in/muthaiyanavendran-k-n-765857252"
+                            target="_blank"
+                            class="flex items-center gap-4 text-gray-300 hover:text-white">
+
+                            <div
+                                class="w-10 h-10 rounded-full glass flex items-center justify-center">
+
+                                <i class="fab fa-linkedin-in"></i>
+
+                            </div>
+
+                            <span>
+                                LinkedIn Profile
+                            </span>
+
+                        </a>
+
+
+                        <!-- CHANGE GITHUB -->
+
+                        <a
+                            href="https://github.com/"
+                            target="_blank"
+                            class="flex items-center gap-4 text-gray-300 hover:text-white">
+
+                            <div
+                                class="w-10 h-10 rounded-full glass flex items-center justify-center">
+
+                                <i class="fab fa-github"></i>
+
+                            </div>
+
+                            <span>
+                                GitHub Profile
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="w-full md:w-3/5 p-10">
+
+                    <div class="space-y-6">
+
+                        <div>
+
+                            <p class="text-xs text-gray-500 uppercase">
+                                Primary Role
+                            </p>
+
+                            <p class="text-white font-semibold mt-1">
+                                Java / Backend Developer
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-xs text-gray-500 uppercase">
+                                Additional Skills
+                            </p>
+
+                            <p class="text-gray-300 mt-1">
+                                ServiceNow · Power Platform · AI & Automation
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-xs text-gray-500 uppercase">
+                                Experience
+                            </p>
+
+                            <p class="text-gray-300 mt-1">
+                                1.7 Years Professional Experience
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-xs text-gray-500 uppercase">
+                                Location
+                            </p>
+
+                            <p class="text-gray-300 mt-1">
+                                Chennai, Tamil Nadu, India
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="https://www.linkedin.com/in/muthaiyanavendran-k-n-765857252"
+                            target="_blank"
+                            class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg">
+
+                            Connect on LinkedIn
+
+                            <i class="fab fa-linkedin"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer
+        class="py-8 text-center text-gray-500 text-sm border-t border-white/5 relative z-10">
+
+        <p>
+
+            &copy;
+            <span id="year"></span>
+            Muthaiyanavendran K N.
+
+        </p>
+
+        <p class="mt-1 text-xs">
+
+            Java Developer | ServiceNow | Power Platform | AI & Automation
+
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        document.getElementById('year').textContent =
+            new Date().getFullYear();
+
+
+        /* Mobile Menu */
+
+        const btn =
+            document.getElementById('mobile-menu-btn');
+
+        const menu =
+            document.getElementById('mobile-menu');
+
+        const mobileLinks =
+            document.querySelectorAll('.mobile-link');
+
+        const icon =
+            btn.querySelector('i');
+
+
+        function toggleMenu() {
+
+            menu.classList.toggle('hidden');
+
+            if (menu.classList.contains('hidden')) {
+
+                icon.classList.remove('fa-times');
+
+                icon.classList.add('fa-bars');
+
+            } else {
+
+                icon.classList.remove('fa-bars');
+
+                icon.classList.add('fa-times');
+
+            }
+
+        }
+
+
+        btn.addEventListener('click', toggleMenu);
+
+
+        mobileLinks.forEach(link => {
+
+            link.addEventListener('click', toggleMenu);
+
+        });
+
+
+        /* Navbar Scroll */
+
+        const navbar =
+            document.getElementById('navbar');
+
+
+        window.addEventListener('scroll', () => {
+
+            if (window.scrollY > 20) {
+
+                navbar.classList.add(
+                    'shadow-lg',
+                    'bg-surface/80'
+                );
+
+            } else {
+
+                navbar.classList.remove(
+                    'shadow-lg',
+                    'bg-surface/80'
+                );
+
+            }
+
+        });
+
+
+        /* Scroll Reveal */
+
+        const revealElements =
+            document.querySelectorAll('.reveal');
+
+
+        const revealCallback =
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('active');
+
+                    }
+
+                });
+
+            };
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                revealCallback,
+                {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -50px 0px"
+                }
+            );
+
+
+        revealElements.forEach(el => {
+
+            revealObserver.observe(el);
+
+        });
+
+    </script>
+
+
+    <!-- Small reusable skill styles -->
+
+    <style>
+
+        .skill {
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        .skill-small {
+            padding: 4px 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 5px;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+        }
+
+    </style>
+
+</body>
+
+</html>
+```
